@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRMChat演示</title>
+</head>
+<body>
+<div class="demo">
+    <div class="title">
+        <h2>CRMChat用户端演示</h2>
+    </div>
+    <div>
+        <ul>
+            <li>
+                请先登录客服管理端
+
+            </li>
+            <li>
+                <a href="https://chat.crmeb.net/kefu" target="_blank">https://chat.crmeb.net/kefu</a> （账号：kefu 密码：kefu123）
+
+            </li>
+        </ul>
+    </div>
+    <ul>
+
+        <li>网页内嵌(每个演示需要重新刷新页面)
+            <a href="javascript:void(0)" onclick="window.location.reload();" style="padding: 7px 10px;">刷新</a>
+        </li>
+        <li><a href="javascript:void(0)" onclick="demo0()"  >0、Pc端对话框右下角展示</a></li>
+        <li><a href="javascript:void(0)" onclick="demo1()" >1、PC端内嵌中间弹窗</a></li>
+        <li><a href="javascript:void(0)" onclick="demo2()" >2、自适应展示(电脑端看不出来效果)</a></li>
+        <li><a href="javascript:void(0)" onclick="demo3()" >3、移动端展示</a></li>
+        <li><a href="kaifa.html" target="_blank">4、演示三自定义模式</a></li>
+        <li>超链接</li>
+        <li><a href="https://chat.crmeb.net/chat/index?noCanClose=1&token=e8bcc017f50e55c63b5352c4257c8904" target="_blank">4、Pc和手机超链接访问自动适应</a></li>
+        <li><a href="https://chat.crmeb.net/chat/pc?noCanClose=1&token=e8bcc017f50e55c63b5352c4257c8904" target="_blank">6、Pc超链接访问</a></li>
+        <li><a href="https://chat.crmeb.net/chat/pc?noCanClose=0&token=e8bcc017f50e55c63b5352c4257c8904" target="_blank">7、Pc超链接访问简介模式</a></li>
+        <li><a href="https://chat.crmeb.net/chat/mobile?noCanClose=0&token=e8bcc017f50e55c63b5352c4257c8904" target="_blank">8、移动端样式</a></li>
+    </ul>
+</div>
+
+</body>
+<!--普通加载需要手动实例化代码-->
+<script src="./../customerServer.js"></script>
+
+<!--简易加载无需多余代码加载完js就可使用-->
+<!--id="chat" 为固定id不可修改-->
+<!--option 参数和之前的参数一样,-->
+<!--增加了"authInit":true 为true才会自动加载-->
+<!--<script src="/../customerServer.js" id="chat" option='{"authInit":true,"openUrl":"https://chat.crmeb.net","isShowTip":true,"token":"e8bcc017f50e55c63b5352c4257c8904"}'></script>-->
+<script>
+    var demostatus = {
+        demo0:false,
+        demo1:false,
+        demo2:false,
+        demo3:false,
+    };
+    function demo0() {
+        if(demostatus.demo0){
+            return;
+        }
+        var option = {
+            openUrl: 'https://chat.crmeb.net',
+            token: 'e8bcc017f50e55c63b5352c4257c8904',
+        };
+        var canCustomerServer = new initCustomerServer(option);
+        canCustomerServer.init();
+        canCustomerServer.getCustomeServer();
+        demostatus.demo0 = true;
+    }
+    function demo1() {
+        if(demostatus.demo1){
+            return;
+        }
+        var option = {
+            openUrl: 'https://chat.crmeb.net',
+            token: 'e8bcc017f50e55c63b5352c4257c8904',
+            isShowTip: true,
+            windowStyle: 'center',//默认空 右下角小弹窗， center 普通中间弹窗样式
+            deviceType:'pc',//打开端 pc
+
+        };
+        var canCustomerServer = new initCustomerServer(option);
+        canCustomerServer.init();
+        demostatus.demo1 = true;
+        //自动弹开对话框
+//    canCustomerServer.getCustomeServer();
+    }
+    function demo2() {
+        if(demostatus.demo2){
+            return;
+        }
+        var option = {
+            openUrl: 'https://chat.crmeb.net',
+            token: 'e8bcc017f50e55c63b5352c4257c8904',
+            isShowTip: true,
+        };
+        var canCustomerServer = new initCustomerServer(option);
+        canCustomerServer.init();
+        demostatus.demo2 = true;
+//    canCustomerServer.getCustomeServer();
+    }
+    function demo3() {
+        if(demostatus.demo3){
+            return;
+        }
+        var option = {
+            openUrl: 'https://chat.crmeb.net',
+            token: 'e8bcc017f50e55c63b5352c4257c8904',
+            isShowTip: true,
+            deviceType:'Mobile',//打开端 Mobile
+        };
+        var canCustomerServer = new initCustomerServer(option);
+        canCustomerServer.init();
+        demostatus.demo3 = true;
+//    canCustomerServer.getCustomeServer();
+    }
+
+    //其他全局事件
+
+    //触发事件
+    // window.$chat.emit('postMessage',['touchend',{uid:10}]);
+
+    //自动实例化后事件
+    //authInit = true 后监听事件可以拿到实例化后的客服对象
+    window.$chat.on('chatAuthAfter',function (instance) {
+
+    });
+    //关闭弹窗事件
+    window.$chat.on('closeWindow',function () {
+        console.log('关闭弹窗')
+    })
+    //消息回执事件
+    window.$chat.on('onMessageChat',function (data) {
+
+    });
+    //消息数量更新事件
+    window.$chat.on('onMessageNum',function (data) {
+
+    });
+    //转接事件
+    window.$chat.on('onMessageTransfer',function (data) {
+
+    });
+    //登录成功回执事件
+    window.$chat.on('onMessageSuccess',function () {
+
+    })
+    //发送图片后的事件
+    window.$chat.on('sendImage',function (data) {
+
+    })
+    //发送图文消息后的事件
+    window.$chat.on('sendImageText',function (data) {
+
+    })
+
+
+</script>
+<style>
+    .demo{
+        width: 800px;
+        height: 600px;
+        background-color: #efefef;
+        border:1px solid #eee;
+        border-radius: 10px;
+        margin:100px auto ;
+        box-shadow: 1px 1px 15px 0px rgba(0, 0, 0, 0.3);
+
+    }
+    .demo .title{
+        text-align: center;height: 50px;padding: 30px;display: block;border-bottom: 1px solid #ccc;
+    }
+    .demo ul li{
+        list-style: none;
+        height: 30px;
+    }
+    .demo ul li a{
+        text-decoration:none;
+        color:blue;
+    }
+</style>
+</html>

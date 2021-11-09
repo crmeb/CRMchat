@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PC端对话框居中展示</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+</head>
+<body>
+<script src="https://chat.crmeb.net/customerServer.js"></script>
+<script>
+    var option = {
+        openUrl: 'https://chat.crmeb.net',
+        token: 'e8bcc017f50e55c63b5352c4257c8904',
+        isShowTip: true,
+        windowStyle: 'center',//默认空 右下角小弹窗， center 普通中间弹窗样式
+        deviceType:'pc',//打开端 pc
+
+    };
+    var canCustomerServer = new initCustomerServer(option);
+    canCustomerServer.init();
+    //自动弹开对话框
+//    canCustomerServer.getCustomeServer();
+</script>
+
+</body>
+</html>

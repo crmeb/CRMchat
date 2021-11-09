@@ -1,0 +1,5 @@
+.DS_Store
+*.xml
+.idea
+composer.lock
+vendor

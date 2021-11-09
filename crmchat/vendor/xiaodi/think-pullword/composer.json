@@ -1,0 +1,36 @@
+{
+    "name": "xiaodi/think-pullword",
+    "description": "ThinkPHP 分词/抽词 扩展包",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xiaodi",
+            "email": "liangjinbiao@live.com"
+        }
+    ],
+    "keywords": [
+        "php",
+        "thinkphp",
+        "think-extend"
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "topthink/framework": "6.0.*|5.1.*",
+        "guzzlehttp/guzzle": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "PullWord\\": "src"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+    "extra": {
+        "think": {
+            "services": [
+                "PullWord\\PullWordService"
+            ]
+        }
+    }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+
+</head>
+
+<body>
+<div class="demo">
+    <span class="close">X</span>
+    <img src="https://img2.baidu.com/it/u=1947138053,2945583187&fm=26&fmt=auto&gp=0.jpg" alt="">
+</div>
+<script src="https://chat.crmeb.net/customerServer.js"></script>
+<script>
+    var option = {
+        openUrl: 'https://chat.crmeb.net',
+        token: 'e8bcc017f50e55c63b5352c4257c8904',
+        kefuid: '',//默认为空自动对接客服，可填写指定客服ID
+        isShowTip: true, // 初始化成功后，界面右下角会自动创建 “联系客服按钮”， 如无需默认展示，则填写false即可,默认为true
+        mobileIcon: '', //  手机端悬浮客服图片
+        pcIcon: '', // pc端悬浮客服图片
+        deviceType:'Mobile',//打开端 Mobile
+//      windowStyle: 'center',//默认空 右下角小弹窗， center 普通中间弹窗样式
+        domId: 'customerServerTip',//展示在页面右下角联系客服的dom的id，可根据id获取到dom后自行修改样式, 默认为customerServerTip
+
+        //        insertDomNode: '.getCode_container', // SPA应用必填，html文件单独引入选填，表示插入客服弹窗的 dom节点，一般为当前界面的根节点，默认为body
+        //设置客户信息
+        //        sendUserData: {
+        //            uid: '1', // 用户id
+        //            nickName: '', // 用户昵称
+        //            phone: '', // 用户联系方式
+        //            sex: '1', // 用户性别
+        //            avatar: '', // 用户头像 URL地址
+        //            openid: ''//微信openid
+        //        },
+        //        //设置默认打开推送产品
+        //        productInfo: {
+        //            store_name: '蒙奇 D 路飞',
+        //                stock: '库存',
+        //                sales: '122', // 销量
+        //                ficti: '10', // 赠送
+        //                price: '100',
+        //                image: ''//产品图片
+        //                proUrl:''//产品链接
+        //            }
+    };
+    var canCustomerServer = new initCustomerServer(option);
+    canCustomerServer.init();
+    //样式设置说明
+    canCustomerServer.setStyleOfCustomerServer(this.canCustomerServer.connentServerDom, {
+        bottom: '10px',
+    });
+
+    canCustomerServer.setStyleOfCustomerServer(canCustomerServer.connentServerDom, {
+        display: 'block'
+    });
+
+
+    document.querySelector('.demo').addEventListener('click', () => {
+
+        canCustomerServer.getCustomeServer();
+    })
+
+    document.querySelector('.close').addEventListener('click', (e) => {
+        canCustomerServer.setStyleOfCustomerServer(document.querySelector('.demo'), {
+        display: 'none'
+    })
+    e.stopPropagation();
+    })
+
+
+</script>
+
+</body>
+
+</html>
+<style>
+    .demo {
+        position: fixed;
+        width: 500px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .demo img {
+        width: 100%;
+        height: auto;
+    }
+
+    .demo span {
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        background-color: rgba(0, 0, 0, 0.9);
+        color:#fff;
+        opacity: 0.9;
+        border: 1px solid #ccc;
+        padding: 5px;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        /* color: #fff; */
+    }
+</style>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{$title|default=''} - {$powered|default=''}</title>
+    <link rel="stylesheet" href="css/install.css?v=9.0"/>
+</head>
+<body>
+<div class="wrap">
+    <div class="header">
+        <h1 class="logo">logo</h1>
+        <div class="icon_install">安装向导</div>
+        <div class="version"></div>
+    </div>
+    <section class="section">
+        <div class="step">
+            <ul>
+                <li class="current"><em>1</em>检测环境</li>
+                <li><em>2</em>创建数据</li>
+                <li><em>3</em>完成安装</li>
+            </ul>
+        </div>
+        <div class="server">
+            <table width="100%">
+                <tr>
+                    <td class="td1">环境检测</td>
+                    <td class="td1" width="25%">推荐配置</td>
+                    <td class="td1" width="25%">当前状态</td>
+                    <td class="td1" width="25%">最低要求</td>
+                </tr>
+                <tr>
+                    <td>操作系统</td>
+                    <td>类UNIX</td>
+                    <td><span class="correct_span">&radic;</span> {$os}</td>
+                    <td>不限制</td>
+                </tr>
+                <!--<tr>-->
+                <!--    <td>服务器环境</td>-->
+                <!--    <td>apache/nginx</td>-->
+                <!--    <td><span class="correct_span">&radic;</span> {$server}</td>-->
+                <!--    <td>apache2.0以上/nginx1.6以上</td>-->
+                <!--</tr>-->
+                <tr>
+                    <td>PHP版本</td>
+                    <td>>7.1.0</td>
+                    <td><span class="correct_span">&radic;</span> {$phpv}</td>
+                    <td>7.1.0以上</td>
+                </tr>
+                <tr>
+                    <td>附件上传</td>
+                    <td>>2M</td>
+                    <td>{$uploadSize|raw}</td>
+                    <td>不限制</td>
+                </tr>
+                <tr>
+                    <td>session</td>
+                    <td>开启</td>
+                    <td>{$session|raw}</td>
+                    <td>开启</td>
+                </tr>
+                <tr>
+                    <td>safe_mode</td>
+                    <td>基础配置</td>
+                    <td>{$safe_mode|raw}</td>
+                    <td>启用</td>
+                </tr>
+                <tr>
+                    <td>GD库</td>
+                    <td>必须开启</td>
+                    <td>{$gd|raw}</td>
+                    <td>1.0</td>
+                </tr>
+                <tr>
+                    <td>swoole</td>
+                    <td>必须安装</td>
+                    <td>{$swoole|raw}</td>
+                    <td>4.0=></td>
+                </tr>
+                <tr>
+                    <td>redis</td>
+                    <td>必须开启</td>
+                    <td>{$redis|raw}</td>
+                    <td>启用</td>
+                </tr>
+                <tr>
+                    <td>mysqli</td>
+                    <td>必须开启</td>
+                    <td>{$mysql|raw}</td>
+                    <td>启用</td>
+                </tr>
+                <tr>
+                    <td>curl_init</td>
+                    <td>必须扩展</td>
+                    <td>{$curl|raw}</td>
+                    <td>启用</td>
+                </tr>
+                <tr>
+                    <td>bcmath</td>
+                    <td>必须扩展</td>
+                    <td>{$bcmath|raw}</td>
+                    <td>启用</td>
+                </tr>
+                <tr>
+                    <td>openssl</td>
+                    <td>必须扩展</td>
+                    <td>{$openssl|raw}</td>
+                    <td>启用</td>
+                </tr>
+                <tr>
+                    <td>fileinfo</td>
+                    <td>必须扩展</td>
+                    <td>{$finfo_open|raw}</td>
+                    <td>启用</td>
+                </tr>
+            </table>
+            <table width="100%">
+                <tr>
+                    <td class="td1">目录、文件权限检查</td>
+                    <td class="td1" width="25%">推荐配置</td>
+                    <td class="td1" width="25%">写入</td>
+                    <td class="td1" width="25%">读取</td>
+                </tr>
+                {$dirStr|raw}
+            </table>
+            <table width="100%">
+                <tr>
+                    <td class="td1" width="70%">函数检测必须开启</td>
+                    <td class="td1" width="30%">当前状态</td>
+                </tr>
+                <tr>
+                    <td>file_put_contents</td>
+                    <td>{$file_put_contents|raw}</td>
+                </tr>
+                <tr>
+                    <td>imagettftext</td>
+                    <td>{$imagettftext|raw}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="bottom tac">
+            <a href="?step=2" class="btn">重新检测</a>
+            {$next|raw}
+        </div>
+    </section>
+</div>
+<div class="footer"> &copy; 2014-2021 <a href="http://www.crmeb.com" target="_blank">www.crmeb.com</a> 西安众邦网络科技有限公司出品</div>
+</body>
+</html>
